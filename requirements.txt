@@ -10,3 +10,5 @@ natsort
 easyocr
 alibi-detect[tensorflow]
 tensorflow
+gdown
+requests

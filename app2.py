@@ -286,9 +286,44 @@ from alibi_detect.od import OutlierAE, OutlierVAE
 from alibi_detect.utils.visualize import plot_instance_score, plot_feature_outlier_image
 from PIL import Image, ImageDraw, ImageFont
 from alibi_detect.utils.saving import load_detector
+import os
+import requests
+from alibi_detect.utils.saving import load_detector
+import os
+import gdown
+from alibi_detect.utils.saving import load_detector
+
+# 🔹 Google Drive file ID (Replace with your actual file ID)
+FILE_ID = "15WSE6bRiTvbo1XWshWy2uh54J-z7To5H"  # Replace with your Google Drive model ID
+MODEL_PATH = "od_vae_grayscale_1256.weights"  # Local model file name
+
+# 🔹 Google Drive download link format
+GDRIVE_URL = f"https://drive.google.com/uc?id={FILE_ID}"
+
+# 🔽 Download model if it doesn't exist
+if not os.path.exists(MODEL_PATH):
+    print("📥 Downloading model from Google Drive...")
+    gdown.download(GDRIVE_URL, MODEL_PATH, quiet=False)
+
+# ✅ Load the model
+vae_model = load_detector(MODEL_PATH)
+#print("✅ Model loaded successfully!")
+
+# MODEL_URL = "https://drive.google.com/drive/folders/15WSE6bRiTvbo1XWshWy2uh54J-z7To5H?usp=sharing"
+# MODEL_PATH = ""
+
+# # Download if not exists
+# if not os.path.exists(MODEL_PATH):
+#     response = requests.get(MODEL_URL, stream=True)
+#     with open(MODEL_PATH, "wb") as f:
+#         for chunk in response.iter_content(chunk_size=1024):
+#             f.write(chunk)
+
+# # Load the model
+# vae_model = load_detector(MODEL_PATH)
 # Initialize VAE model
-vae_model_path = r"C:\Users\nxg11007\OneDrive - NXP\Documents\Image_anamoly\od_vae_grayscale_1256.weights"
-vae_model = load_detector(vae_model_path)
+# vae_model_path = r"C:\Users\nxg11007\OneDrive - NXP\Documents\Image_anamoly\od_vae_grayscale_1256.weights"
+# vae_model = load_detector(vae_model_path)
 vae_threshold = 0.008  # Reconstruction loss threshold
 #confidence_threshold = 60.0  # Confidence score threshold for "Good" pattern
 
