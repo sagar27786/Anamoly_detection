@@ -12,3 +12,4 @@ alibi-detect[tensorflow]
 tensorflow
 gdown
 requests
+numba==0.56.4
