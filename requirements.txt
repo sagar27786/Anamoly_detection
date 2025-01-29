@@ -1,0 +1,12 @@
+streamlit
+pandas
+numpy
+opencv-python-headless
+Pillow
+matplotlib
+pdf2image
+fpdf
+natsort
+easyocr
+alibi-detect[tensorflow]
+tensorflow
